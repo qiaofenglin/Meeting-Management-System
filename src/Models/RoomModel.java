@@ -63,7 +63,7 @@ public class RoomModel {
         try {
                 stmt = db.getConnection().createStatement();
                 PreparedStatement ppst = null;
-                ppst = db.getConnection().prepareStatement("update Room set name=?,picture=?,description=? where number=?");
+                ppst = db.getConnection().prepareStatement("update room_lqf set name=?,picture=?,description=? where number=?");
                 ppst.setString(1, roomData.getName());
                 ppst.setString(2, roomData.getPicture());
                 ppst.setString(3, roomData.getDescription());
@@ -82,7 +82,7 @@ public class RoomModel {
     public ObservableList<RoomData> loadCustomerData() {
         ObservableList<RoomData> data = FXCollections.observableArrayList();
         try {
-            String sql = "SELECT * FROM Room";
+            String sql = "SELECT * FROM room_lqf";
             Connection con = db.getConnection();
 
             assert con != null;
@@ -102,7 +102,7 @@ public class RoomModel {
         try {
             stmt = db.getConnection().createStatement();
             PreparedStatement ppst = null;
-            ppst = db.getConnection().prepareStatement("SELECT * FROM Room  where number=? limit 1");
+            ppst = db.getConnection().prepareStatement("SELECT * FROM room_lqf  where number=? limit 1");
             ppst.setString(1, number);
             ResultSet rs = ppst.executeQuery();
             while (rs.next()) {
@@ -119,7 +119,7 @@ public class RoomModel {
         try {
             stmt = db.getConnection().createStatement();
             PreparedStatement ppst = null;
-            ppst = db.getConnection().prepareStatement("delete FROM Room where id=?");
+            ppst = db.getConnection().prepareStatement("delete FROM room_lqf where id=?");
             ppst.setLong(1, roomData.getId());
             ppst.execute();
             ppst.close();

@@ -60,7 +60,7 @@ public class RefreshmentsModel {
 
     //This will take the following as parameters to add their details into the database. The ID column will be automatically incremented
     public boolean registerLogic(String Username, String Firstname, String Lastname, String Password, String Email) throws SQLException {
-        String sql = "INSERT INTO Users(Username, Firstname, Lastname, Password, Email, Account) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO users_lqf(Username, Firstname, Lastname, Password, Email, Account) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             Connection con = db.getConnection();
             assert con != null;
@@ -88,7 +88,7 @@ public class RefreshmentsModel {
         ObservableList<CatererModel> data = FXCollections.observableArrayList();
         try {
 
-            String sql = "SELECT * FROM Refreshments WHERE Date = ?";
+            String sql = "SELECT * FROM refreshments_lqf WHERE Date = ?";
 
             Connection con = db.getConnection();
             assert con != null;

@@ -12,9 +12,9 @@ import java.sql.SQLException;
  * @Version: v1.0
  */
 public class DBConnect  {
-    private static String url = "jdbc:mysql://127.0.0.1:3306/510project";
-    private static String username = "root";
-    private static String password = "Kk1314258";
+    private static String url = "jdbc:mysql://www.papademas.net:3307/510ftp?autoReconnect=true&useSSL=false";
+    private static String username = "fp510";
+    private static String password = "510";
     private static DBConnect instance = new DBConnect(url,username,password);
     protected Connection connection;
 

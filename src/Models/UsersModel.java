@@ -128,7 +128,7 @@ public class UsersModel extends BaseModel {
     public ObservableList<AccountData> loadCustomerData() {
         ObservableList<AccountData> data= FXCollections.observableArrayList();
         try {
-            String sql = "SELECT * FROM Users";
+            String sql = "SELECT * FROM users_lqf";
             Connection con = db.getConnection();
 
             assert con != null;
@@ -146,7 +146,7 @@ public class UsersModel extends BaseModel {
 
     //If there are no booking for the room in the day, then we will just get whenever the cleaner is next free
     private LocalTime getNextCleanerFree(String startDate){
-        String sql = "SELECT * FROM Bookings WHERE UserID = ? AND StartDate = ? ORDER BY EndTime DESC";
+        String sql = "SELECT * FROM bookings_lqf WHERE UserID = ? AND StartDate = ? ORDER BY EndTime DESC";
         try {
             Connection con = db.getConnection();
             PreparedStatement ps = null;
@@ -176,7 +176,7 @@ public class UsersModel extends BaseModel {
 
     //This will take the following as parameters to add their details into the database. The ID column will be automatically incremented
     public boolean registerLogic(String Username, String Firstname, String Lastname, String Password, String Email) throws SQLException {
-        String sql = "INSERT INTO Users(Username, Firstname, Lastname, Password, Email, Account) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO room_lqf(Username, Firstname, Lastname, Password, Email, Account) VALUES (?, ?, ?, ?, ?, ?)";
         Connection con = db.getConnection();
         try {
             con.setAutoCommit(false);

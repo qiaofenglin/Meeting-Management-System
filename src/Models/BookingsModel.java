@@ -131,7 +131,7 @@ public class BookingsModel {
         ArrayList<userBookings> ubList = new ArrayList<>();
         try {
 
-            String sql = "SELECT * FROM Bookings";
+            String sql = "SELECT * FROM bookings_lqf";
             Connection con = db.getConnection();
 
             ResultSet rs = con.createStatement().executeQuery(sql);
@@ -151,8 +151,8 @@ public class BookingsModel {
 
     public void clearUpDB(){
         try {
-            //removes old data from bookings table
-            String sql = "DELETE FROM Bookings WHERE EndDate <=  DATE_SUB(CURDATE(),INTERVAL -1 DAY)";
+            //removes old data from bookings_lqf table
+            String sql = "DELETE FROM bookings_lqf WHERE EndDate <=  DATE_SUB(CURDATE(),INTERVAL -1 DAY)";
             Connection con = db.getConnection();
             assert con != null;
             con.createStatement().execute(sql);
@@ -168,7 +168,7 @@ public class BookingsModel {
         ObservableList<CleaningSlot> data=FXCollections.observableArrayList();;
         try{
 
-            String sql = "SELECT * FROM Bookings WHERE UserID = ? AND StartDate = ?";
+            String sql = "SELECT * FROM bookings_lqf WHERE UserID = ? AND StartDate = ?";
             Connection con = db.getConnection();
 
             assert con != null;
@@ -196,7 +196,7 @@ public class BookingsModel {
         try{
             Connection con = db.getConnection();
             //Here user ID is sufficient, and need to make sure that the cleaner's account always has the ID 2
-            String sql = "SELECT * FROM Bookings WHERE UserID = ? AND StartDate = ?";
+            String sql = "SELECT * FROM bookings_lqf WHERE UserID = ? AND StartDate = ?";
             assert con != null;
 
             ps = con.prepareStatement(sql);
@@ -230,7 +230,7 @@ public class BookingsModel {
     //This will add the cleaner timeslot of 30 minutes with startTime as we passed
     public boolean addCleanerBooking(int roomID, LocalTime st, LocalDate date){
         LocalTime et = st.plus(30, ChronoUnit.MINUTES);
-        String sql = "INSERT INTO Bookings(RoomID, UserID, Username, StartTime, EndTime, StartDate, EndDate, Resources, Refreshments, RefreshmentsTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO bookings_lqf(RoomID, UserID, Username, StartTime, EndTime, StartDate, EndDate, Resources, Refreshments, RefreshmentsTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try{
             PreparedStatement ps = null;
             Connection con = db.getConnection();
@@ -257,7 +257,7 @@ public class BookingsModel {
 
     //This method will return the next closest booking of the room to see if the room can be cleaned before then.
     public LocalTime getNextBooking(String sd,LocalTime startTime){
-        String sql = "SELECT * FROM Bookings WHERE StartDate = ? ORDER BY StartTime ASC";
+        String sql = "SELECT * FROM bookings_lqf WHERE StartDate = ? ORDER BY StartTime ASC";
         try{
             Connection con = db.getConnection();
             PreparedStatement ps = null;
@@ -291,7 +291,7 @@ public class BookingsModel {
 
     //If there are no booking for the room in the day, then we will just get whenever the cleaner is next free
     private LocalTime getNextCleanerFree(String startDate){
-        String sql = "SELECT * FROM Bookings WHERE UserID = ? AND StartDate = ? ORDER BY EndTime DESC";
+        String sql = "SELECT * FROM bookings_lqf WHERE UserID = ? AND StartDate = ? ORDER BY EndTime DESC";
         try {
             Connection con = db.getConnection();
             PreparedStatement ps = null;
@@ -326,7 +326,7 @@ public class BookingsModel {
         try {
             PreparedStatement ps;
             ResultSet rs;
-            String sql = "SELECT * FROM Bookings WHERE UserID = ?";
+            String sql = "SELECT * FROM bookings_lqf WHERE UserID = ?";
             Connection con = db.getConnection();
             data = FXCollections.observableArrayList();
             assert con != null;
@@ -353,7 +353,7 @@ public class BookingsModel {
     public void deleteBooking(int roomId,String startTime,String startDate){
         try {
             PreparedStatement ps;
-            String sql = "DELETE FROM Bookings WHERE RoomID = ? AND UserID = ? AND StartTime = ? AND StartDate = ?";
+            String sql = "DELETE FROM bookings_lqf WHERE RoomID = ? AND UserID = ? AND StartTime = ? AND StartDate = ?";
             Connection con = db.getConnection();
             assert con != null;
             ps = con.prepareStatement(sql);
@@ -370,7 +370,7 @@ public class BookingsModel {
     public boolean checkDouble(String date,LocalTime startTime,LocalTime endTime) throws SQLException {
         PreparedStatement ps =null;
         ResultSet rs=null;
-        String sql = "SELECT * FROM Bookings WHERE UserID = ? and StartDate = ?";
+        String sql = "SELECT * FROM bookings_lqf WHERE UserID = ? and StartDate = ?";
         ArrayList<TimeSlot> results = new ArrayList<>();
         try{
             Connection con = db.getConnection();
@@ -436,7 +436,7 @@ public class BookingsModel {
         PreparedStatement ps = null;
         ArrayList<TimeSlot> out = new ArrayList<>();
         ResultSet rs = null;
-        String sql = "SELECT * FROM Bookings WHERE RoomID = ? and StartDate = ?";
+        String sql = "SELECT * FROM bookings_lqf WHERE RoomID = ? and StartDate = ?";
         try {
             if (selectedDate == null) {
                 return null;
@@ -494,11 +494,11 @@ public class BookingsModel {
 
 
 
-    //This will take our details and add it to the Bookings table in our database
+    //This will take our details and add it to the bookings_lqf table in our database
     public boolean addBooking(String st,String et,int roomID,String dtime,String resources,String refresh,String refreshTime) throws SQLException {
 
         PreparedStatement ps = null;
-        String sql = "INSERT INTO Bookings(RoomID, UserID, Username, StartTime, EndTime, StartDate, EndDate, Resources, Refreshments, RefreshmentsTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO bookings_lqf(RoomID, UserID, Username, StartTime, EndTime, StartDate, EndDate, Resources, Refreshments, RefreshmentsTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             Connection con = db.getConnection();
             assert con != null;
@@ -527,7 +527,7 @@ public class BookingsModel {
 
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM Refreshments WHERE RoomID = ? AND Date = ?";
+        String sql = "SELECT * FROM refreshments_lqf WHERE RoomID = ? AND Date = ?";
         ArrayList<LocalTime> results = new ArrayList<>();
 
         try {
@@ -558,7 +558,7 @@ public class BookingsModel {
         PreparedStatement ps = null;
         try {
             Connection con = db.getConnection();
-            String sql = "INSERT INTO Refreshments(RoomID, Date, Time, Refreshment) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO refreshments_lqf(RoomID, Date, Time, Refreshment) VALUES (?, ?, ?, ?)";
             assert con != null;
             for (int x = 0; x < refreshments.length; x++) {
                 ps = con.prepareStatement(sql);
