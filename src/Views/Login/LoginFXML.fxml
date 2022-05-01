@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.Login.LoginController">
+    <TextField fx:id="usernameField" alignment="CENTER" layoutX="172.0" layoutY="200.0" prefHeight="23.0"
+               prefWidth="255.0" promptText="Username"/>
+    <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="173.0" layoutY="240.0" prefHeight="23.0"
+                   prefWidth="255.0" promptText="Password"/>
+    <Label fx:id="connectionLabel" layoutX="500.0" layoutY="377.0" prefHeight="18.0" prefWidth="100.0">
+        <tooltip>
+            <Tooltip text="Status of the connection to the database"/>
+        </tooltip>
+    </Label>
+    <Button fx:id="loginButton" layoutX="174.0" layoutY="334.0" mnemonicParsing="false" onAction="#login"
+            prefHeight="23.0" prefWidth="111.0" text="Log in">
+        <tooltip>
+            <Tooltip text="Login"/>
+        </tooltip>
+    </Button>
+    <ComboBox fx:id="accountType" layoutX="174.0" layoutY="279.0" prefHeight="30.0" prefWidth="255.0"
+              promptText="Account type">
+        <tooltip>
+            <Tooltip text="Select what type of account you have"/>
+        </tooltip>
+    </ComboBox>
+    <Button fx:id="registerButton" layoutX="328.0" layoutY="334.0" mnemonicParsing="false" onAction="#registerUser"
+            prefHeight="23.0" prefWidth="100.0" text="Register">
+        <tooltip>
+            <Tooltip text="Create a new account"/>
+        </tooltip>
+    </Button>
+    <Label fx:id="credentialsLabel" layoutY="368.0" prefHeight="18.0" prefWidth="100.0"/>
+    <Label fx:id="backgroundLabel" layoutY="-56.0" prefHeight="254.0" prefWidth="575.0" AnchorPane.leftAnchor="0.0"/>
+</AnchorPane>

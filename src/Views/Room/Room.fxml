@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="fullPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="991.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Room.RoomController">
+    <children>
+        <Label fx:id="tableLabel" alignment="CENTER" layoutX="433.0" layoutY="14.0" prefHeight="23.0" prefWidth="182.0" text="Room Info" />
+        <Button fx:id="bookButton" layoutX="341.0" layoutY="415.0" mnemonicParsing="false" onAction="#doAddRoom" prefHeight="32.0" prefWidth="77.0" text="commit" />
+        <Button fx:id="backButton" layoutX="192.0" layoutY="415.0" mnemonicParsing="false" onAction="#backToDashboard" prefHeight="32.0" prefWidth="77.0" text="Cancel" />
+        <TextArea fx:id="discribeText" layoutX="192.0" layoutY="298.0" prefHeight="85.0" prefWidth="227.0" />
+        <Label alignment="CENTER_RIGHT" layoutX="19.0" layoutY="82.0" maxHeight="18.0" maxWidth="150.0" minHeight="18.0" minWidth="150.0" prefHeight="18.0" prefWidth="150.0" text="Room Number:">
+            <tooltip>
+                <Tooltip text="Select between rooms 1-5" />
+            </tooltip>
+        </Label>
+        <Label alignment="CENTER_RIGHT" layoutX="19.0" layoutY="341.0" maxHeight="18.0" maxWidth="150.0" minHeight="18.0" minWidth="150.0" prefHeight="18.0" prefWidth="150.0" text="Room Description:">
+            <tooltip>
+                <Tooltip text="Room facilities and details" />
+            </tooltip>
+        </Label>
+        <Label fx:id="errorLabel" layoutX="14.0" layoutY="389.0" prefHeight="18.0" prefWidth="322.0" />
+        <TableView fx:id="myTable" layoutX="433.0" layoutY="43.0" onMouseClicked="#onclick" prefHeight="400.0" prefWidth="540.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="433.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="43.0">
+            <columns>
+                <TableColumn fx:id="IDColumn" prefWidth="43.0" text="ID" />
+                <TableColumn fx:id="nameColumn" minWidth="0.0" prefWidth="112.39996337890625" text="Name" />
+                <TableColumn fx:id="numberColumn" minWidth="0.0" prefWidth="112.39996337890625" text="number" />
+                <TableColumn fx:id="pictureColumn" minWidth="0.0" prefWidth="112.39996337890625" text="picture" />
+                <TableColumn fx:id="descriptionColumn" minWidth="0.0" prefWidth="268.79998779296875" text="description" />
+            </columns>
+            <contextMenu>
+                <ContextMenu>
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#deleteRoom" text="Delete" />
+                    </items>
+                </ContextMenu>
+            </contextMenu>
+        </TableView>
+        <Label fx:id="infoLabel" alignment="CENTER_RIGHT" layoutX="19.0" layoutY="191.0" maxHeight="18.0" maxWidth="150.0" minHeight="18.0" minWidth="150.0" prefHeight="18.0" prefWidth="150.0" text="Meeting Pictures:" />
+        <ImageView fx:id="roomImg" fitHeight="154.0" fitWidth="227.0" layoutX="192.0" layoutY="123.0" onMouseClicked="#addRoom" pickOnBounds="true" preserveRatio="true">
+            <effect>
+                <Blend />
+            </effect>
+        </ImageView>
+        <Label alignment="CENTER_RIGHT" layoutX="19.0" layoutY="46.0" maxHeight="18.0" maxWidth="150.0" minHeight="18.0" minWidth="150.0" prefHeight="18.0" prefWidth="140.0" text="Room    Name:" />
+        <TextField fx:id="nameText" layoutX="192.0" layoutY="44.0" prefHeight="26.0" prefWidth="227.0" />
+        <TextField fx:id="numberText" layoutX="192.0" layoutY="80.0" prefHeight="26.0" prefWidth="227.0" />
+    </children>
+</AnchorPane>

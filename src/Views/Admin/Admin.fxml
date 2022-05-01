@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="fullPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.AdminController">
+   <children>
+      <Label fx:id="backgroundLabel" layoutX="79.0" layoutY="32.0" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="caterersDashboardButton" layoutX="117.0" layoutY="468.0" mnemonicParsing="false" onAction="#openCaterersDashboard" prefHeight="23.0" prefWidth="150.0" text="Caterer's Dashboard">
+         <tooltip>
+            <Tooltip text="Shows caterers schedule" />
+         </tooltip></Button>
+      <Button fx:id="cleanersDashboardButton" layoutX="116.0" layoutY="508.0" mnemonicParsing="false" onAction="#openCleanersDashboard" prefHeight="23.0" prefWidth="150.0" text="Cleaner's Dashboard">
+         <tooltip>
+            <Tooltip text="Show cleaners schedule" />
+         </tooltip></Button>
+      <Button layoutX="14.0" layoutY="681.0" mnemonicParsing="false" onAction="#backToLogin" text="Exit" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0">
+         <tooltip>
+            <Tooltip text="Goes back to login page" />
+         </tooltip></Button>
+      <Button fx:id="addRoomButton" onAction="#addRoom" layoutX="117.0" layoutY="428.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="150.0" text="Room Manage">
+         <tooltip>
+            <Tooltip text="Currently inop!" />
+         </tooltip></Button>
+      <PieChart fx:id="chart" prefHeight="380.0" prefWidth="380.0" />
+      <TableView fx:id="myTable" layoutX="380.0" layoutY="40.0" prefHeight="680.0" prefWidth="900.0" AnchorPane.topAnchor="40.0">
+        <columns>
+          <TableColumn fx:id="IDColumn" prefWidth="34.0" text="ID" />
+          <TableColumn fx:id="usernameColumn" prefWidth="128.0" text="Username" />
+            <TableColumn fx:id="firstnameColumn" prefWidth="157.0" text="First name" />
+            <TableColumn fx:id="lastnameColumn" prefWidth="143.0" text="Last name" />
+            <TableColumn fx:id="passwordColumn" prefWidth="140.0" text="Password" />
+            <TableColumn fx:id="emailColumn" minWidth="0.0" prefWidth="187.0" text="Email" />
+            <TableColumn fx:id="accountTypeColumn" minWidth="0.0" prefWidth="135.0" text="Account" />
+        </columns>
+      </TableView>
+      <Label fx:id="accountLabel" layoutX="772.0" layoutY="14.0" text="Accounts Database" />
+      <Button fx:id="addAdminButton" layoutX="117.0" layoutY="632.0" mnemonicParsing="false" onAction="#addAdmin" prefHeight="23.0" prefWidth="150.0" text="+ Admin">
+         <tooltip>
+            <Tooltip text="Add new user as admin" />
+         </tooltip></Button>
+      <Button fx:id="reloadButton" layoutX="117.0" layoutY="592.0" mnemonicParsing="false" onAction="#refreshPage" prefHeight="23.0" prefWidth="150.0" text="Reload data">
+         <tooltip>
+            <Tooltip text="refreshes chart and table" />
+         </tooltip></Button>
+      <Label fx:id="headingLabel" layoutX="85.0" layoutY="14.0" prefHeight="20.0" prefWidth="210.0" text="Today's bookings overview" />
+      <Label fx:id="dbSizeLabel" layoutX="206.0" layoutY="672.0" prefHeight="18.0" prefWidth="150.0" />
+      <Button fx:id="clearDB" layoutX="118.0" layoutY="552.0" mnemonicParsing="false" onAction="#clearUpDB" prefHeight="23.0" prefWidth="150.0" text="Delete History in DB">
+         <tooltip>
+            <Tooltip text="Will remove data entries from yesterday" />
+         </tooltip></Button>
+      <Label fx:id="DBOnlineLabel" layoutX="206.0" layoutY="696.0" prefHeight="18.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>
